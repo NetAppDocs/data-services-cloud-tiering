@@ -1,12 +1,67 @@
 settings:
-  name: "Product Name"
+  name: NetApp Cloud Tiering
+  platform: cloud
   internal:
     pdf_enabled: true
   prod:
     pdf_enabled: true
     harmony_enabled: true
-
-sidebar: 
+  rss_page: "whats-new.html"
+sidebar:
   entries:
-  - title: Legal notices
-    url: /legal-notices.html
+    - title: NetApp Cloud Tiering docs
+      url: /index.html
+    - title: Release notes
+      url: /whats-new.html
+    - title: Get started
+      entries:
+        - title: Learn about NetApp Cloud Tiering
+          url: /concept-cloud-tiering.html
+        - title: Tier on-premises data to the cloud
+          entries:
+            - title: Tier to Amazon S3
+              url: /task-tiering-onprem-aws.html
+            - title: Tier to Azure Blob storage
+              url: /task-tiering-onprem-azure.html
+            - title: Tier to Google Cloud Storage
+              url: /task-tiering-onprem-gcp.html
+            - title: Tier to StorageGRID
+              url: /task-tiering-onprem-storagegrid.html
+            - title: Tier to S3 object storage
+              url: /task-tiering-onprem-s3-compat.html
+        - title: Set up licensing
+          url: /task-licensing-cloud-tiering.html
+        - title: FAQ
+          url: /faq-cloud-tiering.html
+    - title: Use NetApp Cloud Tiering
+      entries:
+        - title: Manage data tiering
+          url: /task-managing-tiering.html
+        - title: Manage object storage
+          url: /task-managing-object-storage.html
+        - title: Test cloud performance
+          url: /task-tiering-test.html
+        - title: View tiering overview for all clusters
+          url: /task-tiering-onprem-overview.html
+        - title: Monitor the status of tiering alerts
+          url: /task-monitor-tiering-alerts.html
+    - title: Reference
+      entries:
+        - title: Supported Amazon S3 storage classes and regions
+          url: /reference-aws-support.html
+        - title: Supported Azure access tiers and regions
+          url: /reference-azure-support.html
+        - title: Supported Google Cloud storage classes and regions
+          url: /reference-google-support.html
+    - title: Knowledge and support
+      entries:
+        - title: Register for support
+          url: /task-support-registration.html
+        - title: Get help
+          url: /task-get-help.html
+    - title: Legal notices
+      url: /legal-notices.html
+product-family:
+  name: NetApp Data Services
+  repo: data-services-family
+  
