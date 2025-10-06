@@ -1,0 +1,261 @@
+---
+sidebar: sidebar
+permalink: task-managing-tiering.html
+keywords: discover, volumes, report, hot, cold, inactive, active, capacity, used capacity, savings, health, failed, console
+summary: Now that you've set up data tiering from your on-premises ONTAP clusters, you can tier data from additional volumes, change a volume's tiering policy, discover additional clusters, and more.
+---
+
+= Manage data tiering for your clusters in NetApp Cloud Tiering
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Now that you've set up data tiering from your on-premises ONTAP clusters, you can tier data from additional volumes, change a volume's tiering policy, discover additional clusters, and more by using NetApp Cloud Tiering.
+
+== Review tiering info for a cluster
+
+Check the data in the cloud tier, on disks, or the amount of hot and cold data on the cluster's disks. Or, you might want to see the amount of hot and cold data on the cluster's disks. Cloud Tiering provides this information for each cluster.
+
+.Steps
+
+. From the left navigation menu, select *Mobility > Cloud Tiering*.
+
+. From the *Clusters* page, select the menu icon image:icon-action.png[Actions icon] for a cluster and select *Cluster info*.
++
+image:screenshot_tiering_cluster_info_button.png[A screenshot of selecting the Cluster Info button from the Clusters page.]
+
+. Review details about the cluster.
++
+Here's an example:
++
+image:screenshot_tiering_cluster_info.png["A screenshot that shows the cluster total used data capacity, cluster used capacity, and cluster information."]
+
+Note that the display is different for Cloud Volumes ONTAP systems. While Cloud Volumes ONTAP volumes can have data tiered to the cloud, they do not use the Cloud Tiering service. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-tiering.html[Learn how to tier inactive data from Cloud Volumes ONTAP systems to low-cost object storage^].
+
+You can also https://docs.netapp.com/us-en/active-iq/task-informed-decisions-based-on-cloud-recommendations.html#tiering[view tiering information for a cluster from Active IQ Digital Advisor (also known as Digital Advisor)^] if you're familiar with this NetApp product. Select *Cloud Recommendations* from the left navigation pane.
+
+image:screenshot_tiering_aiq_fabricpool_info.png["A screenshot that shows FabricPool information for a cluster using the FabricPool Advisor from Digital Advisor."]
+
+== Tier data from additional volumes
+
+Set up data tiering for additional volumes at any time--for example, after creating a new volume.
+
+TIP: You don't need to configure the object storage because it was already configured when you initially set up tiering for the cluster. ONTAP tiers inactive data from any additional volumes to the same object store.
+
+.Steps
+
+. From the left navigation menu, select *Mobility > Cloud Tiering*.
+
+. From the *Clusters* page, select *Tier volumes* for the cluster.
++
+image:screenshot_tiering_tier_volumes_button.png[A screenshot showing how to select the Tier Volumes button for a cluster.]
+
+. On the _Tier Volumes_ page, select the volumes that you want to configure tiering for and launch the Tiering Policy page:
+
++
+* To select all volumes, check the box in the title row (image:button_backup_all_volumes.png[""]) and select *Configure volumes*.
+* To select multiple volumes, check the box for each volume (image:button_backup_1_volume.png[""]) and select *Configure volumes*.
+* To select a single volume, select the row (or image:screenshot_edit_icon.gif[edit pencil icon] icon) for the volume.
++
+image:screenshot_tiering_tier_volumes.png[A screenshot that shows how to select a single volume, multiple volume, or all volumes, and the modify selected volumes button.]
+
+. In the _Tiering Policy_ dialog, select a tiering policy, optionally adjust the cooling days for the selected volumes, and select *Apply*.
+. In the _Tiering Policy_ dialog, select a tiering policy, optionally adjust the cooling days for the selected volumes, and select *Apply*.
++
+link:concept-cloud-tiering.html#volume-tiering-policies[Learn more about volume tiering policies and cooling days].
++
+image:screenshot_tiering_policy_settings.png[A screenshot that shows the configurable tiering policy settings.]
+
+.Result
+
+ONTAP starts tiering the selected volumes' data to the cloud.
+
+== Change a volume's tiering policy
+
+Changing the tiering policy for a volume changes how ONTAP tiers cold data to object storage. The change starts from the moment that you change the policy. It changes only the subsequent tiering behavior for the volume--it does not retroactively move data to the cloud tier.
+
+.Steps
+
+. From the left navigation menu, select *Mobility > CloudTiering*.
+
+. From the *Clusters* page, select *Tier volumes* for the cluster.
+. From the *Clusters* page, select *Tier volumes* for the cluster.
+
+. Click the row for a volume, select a tiering policy, optionally adjust the cooling days, and select *Apply*.
+. Click the row for a volume, select a tiering policy, optionally adjust the cooling days, and select *Apply*.
++
+link:concept-cloud-tiering.html#volume-tiering-policies[Learn more about volume tiering policies and cooling days].
++
+image:screenshot_tiering_policy_settings.png[A screenshot that shows the configurable tiering policy settings.]
+
+NOTE: If you see options to "Retrieve Tiered Data", see <<Migrate data from the cloud tier back to the performance tier,Migrate data from the cloud tier back to the performance tier>> for details.
+
+.Result
+
+ONTAP changes the tiering policy and begins tiering data based on the new policy.
+
+== Change the network bandwidth available to upload inactive data to object storage
+
+When you activate Cloud Tiering for a cluster, by default, ONTAP can use an unlimited amount of bandwidth to transfer the inactive data from volumes in system to object storage. If tiering traffic affects user workloads, throttle the network bandwidth used during the transfer. You can choose a value between 1 and 10,000 Mbps as the maximum transfer rate.
+
+. From the left navigation menu, select *Mobility > Tiering*.
+
+. From the *Clusters* page, select the menu icon image:icon-action.png[Actions icon] for a cluster and select *Maximum transfer rate*.
+. From the *Clusters* page, select the menu icon image:icon-action.png[Actions icon] for a cluster and select *Maximum transfer rate*.
++
+image:screenshot_tiering_transfer_rate_button.png[A screenshot of selecting the Maximum transfer rate button from the Clusters page.]
+
+. In the _Maximum transfer rate_ page, select the *Limited* radio button and enter the maximum bandwidth that can be used, or select *Unlimited* to indicate that there is no limit. Then select *Apply*.
+. In the _Maximum transfer rate_ page, select the *Limited* radio button and enter the maximum bandwidth that can be used, or select *Unlimited* to indicate that there is no limit. Then select *Apply*.
++
+image:screenshot_tiering_transfer_rate.png[A screenshot of the Maximum Transfer Rate dialog for a cluster.]
+
+This setting does not affect the bandwidth allocated to any other clusters that are tiering data.
+
+== Download a tiering report for your volumes
+
+Download a report of the Tier Volumes page so you can review the tiering status of all the volumes on the clusters you are managing. Just select the image:button_download.png[Download] button. Cloud Tiering generates a .CSV file that you can review and send to other groups as needed. The .CSV file includes up to 10,000 rows of data.
+
+image:screenshot_tiering_report_download.png[A screenshot showing how to generate a CSV file listing the tiering status of all your volumes.]
+
+== Migrate data from the cloud tier back to the performance tier
+
+Tiered data that is accessed from the cloud may be "re-heated" and moved back to the performance tier. However, if you want to proactively promote data to the performance tier from the cloud tier, you can do this in the _Tiering Policy_ dialog. This capability is available when using ONTAP 9.8 and greater.
+
+You can do this if you want to stop using tiering on a volume, or if you decide to keep all user data on the performance tier, but keep Snapshot copies on the cloud tier.
+
+There are two options:
+
+[cols="22,45,35",width=95%,options="header"]
+|===
+| Option
+| Description
+| Affect on Tiering Policy
+
+| Bring back all data | Retrieves all volume data and Snapshot copies tiered in the cloud and promotes them to the performance tier. | Tiering policy is changed to "No policy".
+| Bring back active file system | Retrieves only active file system data tiered in the cloud and promotes it to the performance tier (Snapshot copies remain in the cloud). | Tiering policy is changed to "Cold snapshots".
+|===
+
+NOTE: You may be charged by your cloud provider based on that amount of data transferred off the cloud.
+
+.Steps
+
+Ensure the performance tier has enough space for data moved back from the cloud.
+
+. From the left navigation menu, select *Mobility > Cloud Tiering*.
+
+. From the *Clusters* page, select *Tier volumes* for the cluster.
+. From the *Clusters* page, select *Tier volumes* for the cluster.
+
+. Click the image:screenshot_edit_icon.gif[edit icon that appears at the end of each row in the table for tiering volumes] icon for the volume, choose the retrieval option you want to use, and select *Apply*.
+. Click the image:screenshot_edit_icon.gif[edit icon that appears at the end of each row in the table for tiering volumes] icon for the volume, choose the retrieval option you want to use, and select *Apply*.
++
+image:screenshot_tiering_policy_settings_with_retrieve.png[A screenshot that shows the configurable tiering policy settings.]
+
+.Result
+
+The tiering policy is changed and the tiered data starts to be migrated back to the performance tier. Depending on the amount of data in the cloud, the transfer process could take some time.
+
+== Manage tiering settings on aggregates
+
+Each aggregate in your on-premises ONTAP systems has two settings that you can adjust: the tiering fullness threshold and whether inactive data reporting is enabled.
+Each aggregate in your on-premises ONTAP systems has two settings that you can adjust: the tiering fullness threshold and whether inactive data reporting is enabled.
+
+Tiering fullness threshold::
+Setting the threshold to a lower number reduces the amount of data required to be stored on the performance tier before tiering takes place. This might be useful for large aggregates that contain little active data.
++
+Setting the threshold to a higher number increases the amount of data required to be stored on the performance tier before tiering takes place. This might be useful for solutions designed to tier only when aggregates are near maximum capacity.
+
+Inactive data reporting::
+Inactive data reporting (IDR) uses a 31-day cooling period to determine which data is considered inactive. The amount of cold data that is tiered is dependent on the tiering policies set on volumes. This amount might be different than the amount of cold data detected by IDR using a 31-day cooling period.
++
+TIP: It's best to keep IDR enabled because it helps to identify your inactive data and savings opportunities. IDR must remain enabled if data tiering is enabled on an aggregate.
+
+.Steps
+
+. From the *Clusters* page, select *Advanced setup* for the selected cluster.
+. From the *Clusters* page, select *Advanced setup* for the selected cluster.
++
+image:screenshot_tiering_advanced_setup_button.png[A screenshot showing the Advanced Setup button for a cluster.]
+
+. From the Advanced Setup page, select the menu icon for the aggregate and select *Modify Aggregate*.
+. From the Advanced Setup page, select the menu icon for the aggregate and select *Modify Aggregate*.
++
+image:screenshot_tiering_modify_aggr.png["A screenshot showing the Modify Aggregate option for an aggregate."]
+
+. In the dialog that is displayed, modify the fullness threshold and choose whether to enable or disable inactive data reporting.
++
+image:screenshot_tiering_modify_aggregate.png[A screenshot that shows a slider to modify the tiering fullness threshold and a button to enable or disable inactive data reporting.]
+
+. Click *Apply*.
+
+== Fix operational health
+
+If failures occur, Cloud Tiering displays a "Failed" operational health status on the Cluster Dashboard. The health reflects the status of the ONTAP system and the NetApp Console.
+
+.Steps
+
+. Identify any clusters that have an operational health of "Failed."
+
+. Hover over the informational "i" icon see the failure reason.
+
+. Correct the issue:
+
+.. Verify that the ONTAP cluster is operational and that it has an inbound and outbound connection to your object storage provider.
+
+.. Verify that the Console has outbound connections to the Cloud Tiering service, to the object store, and to the ONTAP clusters that it discovers.
+
+== Discover additional clusters from Cloud Tiering
+
+You can add your undiscovered on-premises ONTAP clusters to the Console from the Tiering _Cluster_ page so that you can enable tiering for the cluster.
+
+Note that buttons also appear on the Tiering _On-Prem dashboard_ page for you to discover additional clusters.
+
+.Steps
+
+. From Cloud Tiering, select the *Clusters* tab.
+
+. To see any undiscovered clusters, select *Show undiscovered clusters*.
+. To see any undiscovered clusters, select *Show undiscovered clusters*.
++
+image:screenshot_tiering_show_undiscovered_cluster.png[A screenshot showing the Show Undiscovered Clusters button on the Tiering Dashboard.]
++
+If your NSS credentials are saved in the Console, the clusters in your account are displayed in the list.
++
+If your NSS credentials are not saved, you are first prompted to add your credentials before you can see the undiscovered clusters.
++
+image:screenshot_tiering_discover_cluster.png[A screenshot showing how to discover an existing cluster to add to the Console and the Tiering Dashboard.]
+
+. Click *Discover Cluster* for the cluster that you want to manage through the Console and implement data tiering.
+
+. In the _Cluster Details_ page, enter the password for the admin user account and select *Discover*.
+. In the _Cluster Details_ page, enter the password for the admin user account and select *Discover*.
++
+Note that the cluster management IP address is populated based on information from your NSS account.
+
+. In the _Details & Credentials_ page the cluster name is added as the System Name, so select *Go*.
+
+.Result
+
+The Console discovers the cluster and adds it to the Systems page using the cluster name as the system name.
+
+You can enable the Tiering service or other services for this cluster in the right panel.
+
+== Search for a cluster across all Console agents
+
+If you are using multiple agents to manage all the storage in your environment, some clusters on which you want to implement tiering may be in another agent. If you are not sure which agent is managing a certain cluster, you can search across all agents using Cloud Tiering.
+
+.Steps
+
+. In the Cloud Tiering menu bar, select the action menu and select *Search for cluster in all agents*.
++
+image:screenshot_tiering_search for_cluster.png[A screenshot showing how to search for a cluster that may be in any of your agents.]
+
+. In the displayed Search dialog, enter the name of the cluster and select *Search*.
++
+Cloud Tiering displays the name of the agent if it is able to find the cluster.
+
+. https://docs.netapp.com/us-en/bluexp-setup-admin/task-manage-multiple-connectors.html#switch-between-connectors[Switch to the agent and configure tiering for the cluster^].

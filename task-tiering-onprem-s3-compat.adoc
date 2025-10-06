@@ -1,0 +1,200 @@
+---
+sidebar: sidebar
+permalink: task-tiering-onprem-s3-compat.html
+keywords: data tiering, fabricpool, cloud tiering, tiering cold data, tiering inactive data, tiering aff, tiering fas, tiering ontap, tiering volumes, tier data, tier cold data, tier fas, tier aff, tier ontap, s3, tier to s3, minio
+summary: Free space on your on-premises ONTAP clusters by tiering inactive data to any Object Storage service which uses the Simple Storage Service (S3) protocol.
+summary: Free space on your on-premises ONTAP clusters by tiering inactive data to any Object Storage service which uses the Simple Storage Service (S3) protocol.
+---
+
+= Tier data from on-premises ONTAP clusters to S3 object storage in NetApp Cloud Tiering
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Free space on your on-premises ONTAP clusters by tiering inactive data in NetApp Cloud Tiering to any object storage service which uses the Simple Storage Service (S3) protocol.
+
+At this time, MinIO object storage has been qualified.
+
+[CAUTION]
+====
+Customers who want to use object stores that are not officially supported as a cloud tier can do so using these instructions. Customers must test and confirm that the object store meets their requirements.
+
+NetApp does not support, nor is liable, for any issues arising from any third-party Object Store Service, specifically where it does not have agreed support arrangements with the third party with whom the product originated. It is acknowledged and agreed that NetApp shall not be liable for any associated damage or otherwise be required to provide support on that third-party product.
+====
+
+== Quick start
+
+Get started quickly by following these steps, or scroll down to the remaining sections for full details.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png[One] Prepare to tier data to S3-compatible object storage
+
+[role="quick-margin-para"]
+You need the following:
+
+[role="quick-margin-list"]
+* A source on-premises ONTAP cluster that's running ONTAP 9.8 or later that you have added to the NetApp Console, and a connection over a user-specified port to the destination S3-compatible object storage. https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html[Learn how to discover a cluster^].
+* The FQDN, Access Key, and Secret Key for the object storage server so that the ONTAP cluster can access the bucket.
+* A Console agent installed on your premises.
+* Networking for the agent that enables an outbound HTTPS connection to the source ONTAP cluster, to the S3-compatible object storage, and to the Cloud Tiering service.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png[Two] Set up tiering
+
+[role="quick-margin-para"]
+In the Console, select an on-premises system, select *Enable* for the Tiering service, and follow the prompts to tier data to S3-compatible object storage.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png[Three] Set up licensing
+
+[role="quick-margin-para"]
+Pay for Cloud Tiering through a pay-as-you-go subscription from your cloud provider, a Cloud Tiering bring-your-own-license, or a combination of both:
+
+[role="quick-margin-list"]
+* To subscribe to the PAYGO offering from the https://aws.amazon.com/marketplace/pp/prodview-oorxakq6lq7m4?sr=0-8&ref_=beagle&applicationId=AWSMPContessa[AWS Marketplace^], https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-manager?tab=Overview[Azure Marketplace^], or https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project&rif_reserved[GCP Marketplace^], select *Subscribe* and follow the prompts.
+
+* To pay using a Cloud Tiering BYOL license, mailto:ng-cloud-tiering@netapp.com?subject=Licensing[contact us if you need to purchase one], and then link:https://docs.netapp.com/us-en/bluexp-digital-wallet/task-manage-data-services-licenses.html[add it to the NetApp Console^].
+.
+
+== Requirements
+
+Verify support for your ONTAP cluster, set up your networking, and prepare your object storage.
+
+The following image shows each component and the connections that you need to prepare between them:
+
+image:diagram_cloud_tiering_s3_compat.png["An architecture image that shows the Cloud Tiering service with a connection to the agent on your premises, the agent with a connection to your ONTAP cluster, and a connection between the ONTAP cluster and object storage. Active data resides on the ONTAP cluster, while inactive data resides in object storage."]
+
+NOTE: Communication between the agent and the S3-compatible object storage server is for object storage setup only.
+
+=== Prepare your ONTAP clusters
+
+Your source ONTAP clusters must meet the following requirements when tiering data to S3-compatible object storage.
+
+Supported ONTAP platforms::
+You can tier data from AFF systems, or FAS systems with all-SSD aggregates or all-HDD aggregates.
+
+Supported ONTAP version::
+ONTAP 9.8 or later
+
+Cluster networking requirements::
+* The ONTAP cluster initiates an HTTPS connection over a user-specified port to S3-compatible object storage (the port is configurable during tiering setup).
++
+The source ONTAP system reads and writes data to and from object storage. The object storage never initiates, it just responds.
+
+* An inbound connection is required from the agent, which must reside on your premises.
++
+A connection between the cluster and the Cloud Tiering service is not required.
+
+* An intercluster LIF is required on each ONTAP node that hosts the volumes you want to tier. The LIF must be associated with the _IPspace_ that ONTAP should use to connect to object storage.
++
+When you set up data tiering, Cloud Tiering prompts you for the IPspace to use. You should choose the IPspace that each LIF is associated with. That might be the "Default" IPspace or a custom IPspace that you created. Learn more about https://docs.netapp.com/us-en/ontap/networking/create_a_lif.html[LIFs^] and https://docs.netapp.com/us-en/ontap/networking/standard_properties_of_ipspaces.html[IPspaces^].
+
+include::_include/tiering_supported_volumes.adoc[]
+
+TIP: Cloud Tiering supports both FlexVol and FlexGroup volumes.
+
+=== Discover an ONTAP cluster
+
+You need to add your on-premises ONTAP system to the Console before you can start tiering cold data.
+
+https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html[Learn how to discover a cluster^].
+
+=== Prepare S3-compatible object storage
+
+S3-compatible object storage must meet the following requirements.
+
+S3 credentials::
+When you set up tiering to S3-compatible object storage, you're prompted to create an S3 bucket or to select an existing S3 bucket. You need to provide Cloud Tiering with an S3 access key and secret key. Cloud Tiering uses the keys to access your bucket.
++
+These access keys must be associated with a user who has the following permissions:
++
+[source,json]
+"s3:ListAllMyBuckets",
+"s3:ListBucket",
+"s3:GetObject",
+"s3:PutObject",
+"s3:DeleteObject",
+"s3:CreateBucket"
+
+=== Create or switch agents
+
+A Console agent is required to tier data to the cloud. When tiering data to S3-compatible object storage, an agent must be available on your premises. You'll either need to install a new agent or make sure that the currently selected agent resides on-premises.
+
+* https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html[Learn about agents^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-on-prem.html[Install and set up an agent on-premises^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/task-manage-multiple-connectors.html#switch-between-connectors[Switch between agents^]
+
+=== Prepare networking for the Console agent
+
+Ensure that the agent has the required networking connections.
+
+.Steps
+
+. Ensure that the network where the agent is installed enables the following connections:
+
+* An HTTPS connection over port 443 to the Cloud Tiering service (https://docs.netapp.com/us-en/bluexp-setup-admin/task-set-up-networking-on-prem.html#endpoints-contacted-for-day-to-day-operations[see the list of endpoints^])
+* An HTTPS connection over port 443 to S3-compatible object storage
+* An HTTPS connection over port 443 to your ONTAP cluster management LIF
+
+== Tiering inactive data from your first cluster to S3-compatible object storage
+
+After you prepare your environment, start tiering inactive data from your first cluster.
+
+.What you'll need
+
+* https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html[An on-premises system added to NetApp Console^].
+* The FQDN of the S3-compatible object storage server and the port that will be used for HTTPS communications.
+* An access key and secret key that has the required S3 permissions.
+
+.Steps
+
+. Select the on-premises ONTAP system.
+
+. Click *Enable* for the Cloud Tiering service from the right panel.
++
+image:screenshot_setup_tiering_onprem.png[A screenshot that shows the Tiering option that appears on the right side of the screen after you select an on-premises ONTAP system.]
+
+. *Define Object Storage Name*: Enter a name for this object storage. It must be unique from any other object storage you may be using with aggregates on this cluster.
+
+. *Select Provider*: Select *S3 Compatible* and select *Continue*.
+. *Select Provider*: Select *S3 Compatible* and select *Continue*.
+
+. Complete the steps on the *Create Object Storage* pages:
+
+.. *Server*: Enter the FQDN of the S3-compatible object storage server, the port that ONTAP should use for HTTPS communication with the server, and the access key and secret key for an account that has the required S3 permissions.
+
+.. *Bucket*: Add a new bucket or select an existing bucket and select *Continue*.
+.. *Bucket*: Add a new bucket or select an existing bucket and select *Continue*.
+
+.. *Cluster Network*: Select the IPspace that ONTAP should use to connect to object storage and select *Continue*.
+.. *Cluster Network*: Select the IPspace that ONTAP should use to connect to object storage and select *Continue*.
++
+Selecting the correct IPspace ensures that Cloud Tiering can set up a connection from ONTAP to your S3-compatible object storage.
++
+You can also set the network bandwidth available to upload inactive data to object storage by defining the "Maximum transfer rate". Select the *Limited* radio button and enter the maximum bandwidth that can be used, or select *Unlimited* to indicate that there is no limit.
+
+. On the _Success_ page select *Continue* to set up your volumes now.
+
+. On the _Tier Volumes_ page, select the volumes that you want to configure tiering for and select *Continue*:
+
++
+* To select all volumes, check the box in the title row (image:button_backup_all_volumes.png[""]) and select *Configure volumes*.
+* To select multiple volumes, check the box for each volume (image:button_backup_1_volume.png[""]) and select *Configure volumes*.
+* To select a single volume, select the row (or image:screenshot_edit_icon.gif[edit pencil icon] icon) for the volume.
++
+image:screenshot_tiering_initial_volumes.png["A screenshot that shows how to select a single volume, multiple volumes, or all volumes, and the modify selected volumes button."]
+
+. In the _Tiering Policy_ dialog, select a tiering policy, optionally adjust the cooling days for the selected volumes, and select *Apply*.
++
+link:concept-cloud-tiering.html#volume-tiering-policies[Learn more about volume tiering policies and cooling days].
++
+image:screenshot_tiering_initial_policy_settings.png[A screenshot that shows the configurable tiering policy settings.]
+
+
+.What's next?
+
+link:task-licensing-cloud-tiering.html[Be sure to subscribe to the Cloud Tiering service].
+
+You can review information about the active and inactive data on the cluster. link:task-managing-tiering.html[Learn more about managing your tiering settings].
+
+You can also create additional object storage in cases where you may want to tier data from certain aggregates on a cluster to different object stores. Or if you plan to use FabricPool Mirroring where your tiered data is replicated to an additional object store. link:task-managing-object-storage.html[Learn more about managing object stores].

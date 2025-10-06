@@ -1,14 +1,59 @@
 indexpage:
-  title: # Unquoted string 
-  lead: # Quoted string
-  summary: # Quoted string 
-  keywords: # Unquoted comma-delimited list of keywords 
-  tiles: 
-    # Tile definition 
-    - title: # Quoted or unquoted string
-      links: 
-        # Link definition
-        - title: # Quoted or unquoted string
-          url: # Path to target
-        # Next link on this tile (title/url pair)
-    # Next tile on this page (title/links)
+  title: NetApp Cloud Tiering documentation
+  lead: NetApp Cloud Tiering extends your data center to the cloud by automatically tiering inactive data from on-premises ONTAP clusters to object storage.
+  summary: NetApp Cloud Tiering extends your data center to the cloud by automatically tiering inactive data from on-premises ONTAP clusters to object storage.
+  keywords: bluexp, ontap, cloud tiering, documentation, netapp console, console
+  tiles:
+    - title: Get started
+      links:
+        - title: Learn about NetApp Cloud Tiering
+          url: concept-cloud-tiering.html
+        - title: What's New
+          url: whats-new.html
+        - title: Set up licensing
+          url: task-licensing-cloud-tiering.html
+    - title: Tier on-premises ONTAP data to the cloud
+      links:
+        - title: Tier to Amazon S3
+          url: task-tiering-onprem-aws.html
+        - title: Tier to Azure Blob
+          url: task-tiering-onprem-azure.html
+        - title: Tier to Google Cloud
+          url: task-tiering-onprem-gcp.html
+        - title: Tier to StorageGRID
+          url: task-tiering-onprem-storagegrid.html
+        - title: Tier to generic S3
+          url: task-tiering-onprem-s3-compat.html
+    - title: Manage tiering settings
+      links:
+        - title: Change a volume's tiering policy
+          url: task-managing-tiering.html#changing-a-volumes-tiering-policy
+        - title: Review tiering info for a cluster
+          url: task-managing-tiering.html#reviewing-tiering-info-for-a-cluster
+        - title: Tier data from additional volumes
+          url: task-managing-tiering.html#tiering-data-from-additional-volumes
+        - title: Change the bandwidth to upload inactive data to object storage
+          url: task-managing-tiering.html#changing-the-network-bandwidth-available-to-upload-inactive-data-to-object-storage
+        - title: Move data from the cloud back to the performance tier
+          url: task-managing-tiering.html#migrating-data-from-the-cloud-tier-back-to-the-performance-tier
+        - title: Manage tiering settings on aggregates
+          url: task-managing-tiering.html#managing-tiering-settings-on-aggregates
+    - title: Manage object storage
+      links:
+        - title: Add a new object store for a cluster
+          url: task-managing-object-storage.html#adding-a-new-object-store
+        - title: Add a second object store to an aggregate for mirroring
+          url: task-managing-object-storage.html#attaching-a-second-object-store-to-an-aggregate-for-mirroring
+        - title: Swap the primary and mirror object store
+          url: task-managing-object-storage.html#swapping-the-primary-and-mirror-object-store
+        - title: Remove a mirror object store
+          url: task-managing-object-storage.html#removing-a-mirror-object-store-from-an-aggregate
+    - title: Blogs & community
+      links:
+        - title: NetApp Console
+          url: https://www.netapp.com/console
+        - title: NetApp Data Services
+          url: https://www.netapp.com/data-services/
+        - title: NetApp Community
+          url: https://community.netapp.com/
+  
