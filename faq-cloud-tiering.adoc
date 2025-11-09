@@ -112,7 +112,6 @@ Yes. All reads from the public cloud are subject to egress fees.
 The best way to estimate how much a cloud provider will charge for hosting your data is to use their calculators: https://calculator.aws/#/[AWS], https://azure.microsoft.com/en-us/pricing/calculator/[Azure] and https://cloud.google.com/products/calculator[Google Cloud].
 
 === Are there any extra charges by the cloud providers for reading/retrieving data from the object storage to the on-premises storage?
-=== Are there any extra charges by the cloud providers for reading/retrieving data from the object storage to the on-premises storage?
 
 Yes. Check https://aws.amazon.com/s3/pricing/[Amazon S3 Pricing], https://azure.microsoft.com/en-us/pricing/details/storage/blobs/[Block Blob Pricing], and https://cloud.google.com/storage/pricing[Cloud Storage Pricing] for additional pricing incurred with data reading/retrieving.
 

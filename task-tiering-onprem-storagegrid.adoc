@@ -150,18 +150,15 @@ image:screenshot_setup_tiering_onprem.png[A screenshot that shows the Setup Tier
 . *Define Object Storage Name*: Enter a name for this object storage. It must be unique from any other object storage you may be using with aggregates on this cluster.
 
 . *Select Provider*: Select *StorageGRID* and select *Continue*.
-. *Select Provider*: Select *StorageGRID* and select *Continue*.
 
 . Complete the steps on the *Create Object Storage* pages:
 
 .. *Server*: Enter the FQDN of the StorageGRID Gateway Node, the port that ONTAP should use for HTTPS communication with StorageGRID, and the access key and secret key for an account that has the required S3 permissions.
 
 .. *Bucket*: Add a new bucket or select an existing bucket that starts with the prefix _fabric-pool_ and select *Continue*.
-.. *Bucket*: Add a new bucket or select an existing bucket that starts with the prefix _fabric-pool_ and select *Continue*.
 +
 The _fabric-pool_ prefix is required because the IAM policy for the agent enables the instance to perform S3 actions on buckets named with that exact prefix. For example, you could name the S3 bucket _fabric-pool-AFF1_, where AFF1 is the name of the cluster.
 
-.. *Cluster Network*: Select the IPspace that ONTAP should use to connect to object storage and select *Continue*.
 .. *Cluster Network*: Select the IPspace that ONTAP should use to connect to object storage and select *Continue*.
 +
 Selecting the correct IPspace ensures that Cloud Tiering can set up a connection from ONTAP to StorageGRID object storage.
@@ -174,13 +171,9 @@ You can also set the network bandwidth available to upload inactive data to obje
 * To select all volumes, check the box in the title row (image:button_backup_all_volumes.png[""]) and select *Configure volumes*.
 * To select multiple volumes, check the box for each volume (image:button_backup_1_volume.png[""]) and select *Configure volumes*.
 * To select a single volume, select the row (or image:screenshot_edit_icon.gif[edit pencil icon] icon) for the volume.
-* To select all volumes, check the box in the title row (image:button_backup_all_volumes.png[""]) and select *Configure volumes*.
-* To select multiple volumes, check the box for each volume (image:button_backup_1_volume.png[""]) and select *Configure volumes*.
-* To select a single volume, select the row (or image:screenshot_edit_icon.gif[edit pencil icon] icon) for the volume.
 +
 image:screenshot_tiering_initial_volumes.png[A screenshot that shows how to select a single volume, multiple volumes, or all volumes, and the modify selected volumes button.]
 
-. In the _Tiering Policy_ dialog, select a tiering policy, optionally adjust the cooling days for the selected volumes, and select *Apply*.
 . In the _Tiering Policy_ dialog, select a tiering policy, optionally adjust the cooling days for the selected volumes, and select *Apply*.
 +
 link:concept-cloud-tiering.html#volume-tiering-policies[Learn more about volume tiering policies and cooling days].

@@ -157,16 +157,13 @@ image:screenshot_setup_tiering_onprem.png[A screenshot that shows the Tiering op
 . *Define Object Storage Name*: Enter a name for this object storage. It must be unique from any other object storage you may be using with aggregates on this cluster.
 
 . *Select Provider*: Select *S3 Compatible* and select *Continue*.
-. *Select Provider*: Select *S3 Compatible* and select *Continue*.
 
 . Complete the steps on the *Create Object Storage* pages:
 
 .. *Server*: Enter the FQDN of the S3-compatible object storage server, the port that ONTAP should use for HTTPS communication with the server, and the access key and secret key for an account that has the required S3 permissions.
 
 .. *Bucket*: Add a new bucket or select an existing bucket and select *Continue*.
-.. *Bucket*: Add a new bucket or select an existing bucket and select *Continue*.
 
-.. *Cluster Network*: Select the IPspace that ONTAP should use to connect to object storage and select *Continue*.
 .. *Cluster Network*: Select the IPspace that ONTAP should use to connect to object storage and select *Continue*.
 +
 Selecting the correct IPspace ensures that Cloud Tiering can set up a connection from ONTAP to your S3-compatible object storage.

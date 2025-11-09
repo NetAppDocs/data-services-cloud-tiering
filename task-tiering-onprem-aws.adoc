@@ -268,13 +268,11 @@ image:screenshot_setup_tiering_onprem.png[A screenshot that shows the Enable opt
 . *Define Object Storage Name*: Enter a name for this object storage. It must be unique from any other object storage you may be using with aggregates on this cluster.
 
 . *Select Provider*: Select *Amazon Web Services* and select *Continue*.
-. *Select Provider*: Select *Amazon Web Services* and select *Continue*.
 +
 image:screenshot_tiering_aws_s3_bucket.png[A screenshot showing the data that must be provided to set up tiering to an S3 bucket.]
 
 . Complete the sections in the *Tiering Setup* page:
 
-.. *S3 Bucket*: Add a new S3 bucket or select an existing S3 bucket, select the bucket region, and select *Continue*.
 .. *S3 Bucket*: Add a new S3 bucket or select an existing S3 bucket, select the bucket region, and select *Continue*.
 +
 When using an on-premises agent, you must enter the AWS Account ID that provides access to the existing S3 bucket or new S3 bucket that will be created.
