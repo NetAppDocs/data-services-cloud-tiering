@@ -15,7 +15,6 @@ summary: Free space on your on-premises ONTAP clusters by tiering inactive data 
 
 [.lead]
 Free space on your on-premises ONTAP clusters by tiering inactive data to Azure Blob storage.
-Free space on your on-premises ONTAP clusters by tiering inactive data to Azure Blob storage.
 
 == Quick start
 
@@ -154,16 +153,13 @@ image:screenshot_setup_tiering_onprem.png[A screenshot that shows the Enable opt
 . *Define Object Storage Name*: Enter a name for this object storage. It must be unique from any other object storage you may be using with aggregates on this cluster.
 
 . *Select Provider*: Select *Microsoft Azure* and select *Continue*.
-. *Select Provider*: Select *Microsoft Azure* and select *Continue*.
 
 . Complete the steps on the *Create Object Storage* pages:
 
 .. *Resource Group*: Select a resource group where an existing container is managed, or where you'd like to create a new container for tiered data, and select *Continue*.
-.. *Resource Group*: Select a resource group where an existing container is managed, or where you'd like to create a new container for tiered data, and select *Continue*.
 +
 When using an on-premises agent, you must enter the Azure Subscription that provides access to the resource group.
 
-.. *Azure Container*: Select the radio button to either add a new Blob container to a storage account or to use an existing container. Then select the storage account and choose the existing container, or enter the name for the new container. Then select *Continue*.
 .. *Azure Container*: Select the radio button to either add a new Blob container to a storage account or to use an existing container. Then select the storage account and choose the existing container, or enter the name for the new container. Then select *Continue*.
 +
 The storage accounts and containers that appear in this step belong to the resource group that you selected in the previous step.
