@@ -15,7 +15,6 @@ summary: Free space on your on-premises ONTAP clusters by tiering inactive data 
 
 [.lead]
 Free space on your on-premises ONTAP clusters by tiering inactive data to Azure Blob storage.
-Free space on your on-premises ONTAP clusters by tiering inactive data to Azure Blob storage.
 
 == Quick start
 
