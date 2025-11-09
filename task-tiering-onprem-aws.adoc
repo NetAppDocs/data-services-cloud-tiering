@@ -206,7 +206,6 @@ https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
 If you plan to use a standard public internet connection, then all the permissions are set by the agent and there is nothing else you need to do. This type of connection is shown in the <<Network diagrams for connection options,first diagram above>>.
 
 If you want to have a more secure connection over the internet from your on-premises data center to the VPC, there's an option to select an AWS PrivateLink connection in the Tiering activation wizard. It's required if you plan to use a VPN or AWS Direct Connect to connect your on-premises system through a VPC Endpoint interface that uses a private IP address. This type of connection is shown in the <<Network diagrams for connection options,second diagram above>>.
-If you want to have a more secure connection over the internet from your on-premises data center to the VPC, there's an option to select an AWS PrivateLink connection in the Tiering activation wizard. It's required if you plan to use a VPN or AWS Direct Connect to connect your on-premises system through a VPC Endpoint interface that uses a private IP address. This type of connection is shown in the <<Network diagrams for connection options,second diagram above>>.
 
 . Create an Interface endpoint configuration using the Amazon VPC Console or the command line. https://docs.aws.amazon.com/AmazonS3/latest/userguide/privatelink-interface-endpoints.html[See details about using AWS PrivateLink for Amazon S3^].
 
