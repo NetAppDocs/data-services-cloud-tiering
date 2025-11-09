@@ -22,7 +22,6 @@ You can view all the object stores that have been configured for each cluster an
 .Steps
 
 . From the *Clusters* page, select the menu icon for a cluster and select *Object Store Info*.
-. From the *Clusters* page, select the menu icon for a cluster and select *Object Store Info*.
 
 . Review details about the object stores.
 +
@@ -37,9 +36,7 @@ You can add a new object store for aggregates in your cluster. After you create 
 .Steps
 
 . From the *Clusters* page, select the menu icon for a cluster and select *Object Store Info*.
-. From the *Clusters* page, select the menu icon for a cluster and select *Object Store Info*.
 
-. From the Object Store Information page, select *Create New Object Store*.
 . From the Object Store Information page, select *Create New Object Store*.
 +
 image:screenshot_tiering_object_store_create_button.png["A screenshot showing the Create New Object Store button to create a new object store."]

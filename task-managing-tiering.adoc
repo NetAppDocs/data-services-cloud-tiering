@@ -63,7 +63,6 @@ image:screenshot_tiering_tier_volumes_button.png[A screenshot showing how to sel
 image:screenshot_tiering_tier_volumes.png[A screenshot that shows how to select a single volume, multiple volume, or all volumes, and the modify selected volumes button.]
 
 . In the _Tiering Policy_ dialog, select a tiering policy, optionally adjust the cooling days for the selected volumes, and select *Apply*.
-. In the _Tiering Policy_ dialog, select a tiering policy, optionally adjust the cooling days for the selected volumes, and select *Apply*.
 +
 link:concept-cloud-tiering.html#volume-tiering-policies[Learn more about volume tiering policies and cooling days].
 +
@@ -82,9 +81,7 @@ Changing the tiering policy for a volume changes how ONTAP tiers cold data to ob
 . From the left navigation menu, select *Mobility > CloudTiering*.
 
 . From the *Clusters* page, select *Tier volumes* for the cluster.
-. From the *Clusters* page, select *Tier volumes* for the cluster.
 
-. Click the row for a volume, select a tiering policy, optionally adjust the cooling days, and select *Apply*.
 . Click the row for a volume, select a tiering policy, optionally adjust the cooling days, and select *Apply*.
 +
 link:concept-cloud-tiering.html#volume-tiering-policies[Learn more about volume tiering policies and cooling days].
@@ -104,11 +101,9 @@ When you activate Cloud Tiering for a cluster, by default, ONTAP can use an unli
 . From the left navigation menu, select *Mobility > Tiering*.
 
 . From the *Clusters* page, select the menu icon image:icon-action.png[Actions icon] for a cluster and select *Maximum transfer rate*.
-. From the *Clusters* page, select the menu icon image:icon-action.png[Actions icon] for a cluster and select *Maximum transfer rate*.
 +
 image:screenshot_tiering_transfer_rate_button.png[A screenshot of selecting the Maximum transfer rate button from the Clusters page.]
 
-. In the _Maximum transfer rate_ page, select the *Limited* radio button and enter the maximum bandwidth that can be used, or select *Unlimited* to indicate that there is no limit. Then select *Apply*.
 . In the _Maximum transfer rate_ page, select the *Limited* radio button and enter the maximum bandwidth that can be used, or select *Unlimited* to indicate that there is no limit. Then select *Apply*.
 +
 image:screenshot_tiering_transfer_rate.png[A screenshot of the Maximum Transfer Rate dialog for a cluster.]
@@ -148,9 +143,7 @@ Ensure the performance tier has enough space for data moved back from the cloud.
 . From the left navigation menu, select *Mobility > Cloud Tiering*.
 
 . From the *Clusters* page, select *Tier volumes* for the cluster.
-. From the *Clusters* page, select *Tier volumes* for the cluster.
 
-. Click the image:screenshot_edit_icon.gif[edit icon that appears at the end of each row in the table for tiering volumes] icon for the volume, choose the retrieval option you want to use, and select *Apply*.
 . Click the image:screenshot_edit_icon.gif[edit icon that appears at the end of each row in the table for tiering volumes] icon for the volume, choose the retrieval option you want to use, and select *Apply*.
 +
 image:screenshot_tiering_policy_settings_with_retrieve.png[A screenshot that shows the configurable tiering policy settings.]
@@ -161,7 +154,6 @@ The tiering policy is changed and the tiered data starts to be migrated back to 
 
 == Manage tiering settings on aggregates
 
-Each aggregate in your on-premises ONTAP systems has two settings that you can adjust: the tiering fullness threshold and whether inactive data reporting is enabled.
 Each aggregate in your on-premises ONTAP systems has two settings that you can adjust: the tiering fullness threshold and whether inactive data reporting is enabled.
 
 Tiering fullness threshold::
@@ -177,11 +169,9 @@ TIP: It's best to keep IDR enabled because it helps to identify your inactive da
 .Steps
 
 . From the *Clusters* page, select *Advanced setup* for the selected cluster.
-. From the *Clusters* page, select *Advanced setup* for the selected cluster.
 +
 image:screenshot_tiering_advanced_setup_button.png[A screenshot showing the Advanced Setup button for a cluster.]
 
-. From the Advanced Setup page, select the menu icon for the aggregate and select *Modify Aggregate*.
 . From the Advanced Setup page, select the menu icon for the aggregate and select *Modify Aggregate*.
 +
 image:screenshot_tiering_modify_aggr.png["A screenshot showing the Modify Aggregate option for an aggregate."]
@@ -219,7 +209,6 @@ Note that buttons also appear on the Tiering _On-Prem dashboard_ page for you to
 . From Cloud Tiering, select the *Clusters* tab.
 
 . To see any undiscovered clusters, select *Show undiscovered clusters*.
-. To see any undiscovered clusters, select *Show undiscovered clusters*.
 +
 image:screenshot_tiering_show_undiscovered_cluster.png[A screenshot showing the Show Undiscovered Clusters button on the Tiering Dashboard.]
 +
@@ -231,7 +220,6 @@ image:screenshot_tiering_discover_cluster.png[A screenshot showing how to discov
 
 . Click *Discover Cluster* for the cluster that you want to manage through the Console and implement data tiering.
 
-. In the _Cluster Details_ page, enter the password for the admin user account and select *Discover*.
 . In the _Cluster Details_ page, enter the password for the admin user account and select *Discover*.
 +
 Note that the cluster management IP address is populated based on information from your NSS account.
