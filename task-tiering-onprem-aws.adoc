@@ -109,6 +109,7 @@ If you already have an agent deployed in your AWS VPC or on your premises, then 
 
 * If you have a Direct Connect or VPN connection from your ONTAP cluster to the VPC, and you want communication between the agent and S3 to stay in your AWS internal network (a *private* connection), you'll need to enable a VPC Endpoint interface to S3. <<Configure your system for a private connection using a VPC endpoint interface,See how to set up a VPC endpoint interface.>>
 
+[[preparing-your-ontap-clusters]]
 == Prepare your ONTAP cluster
 
 Your ONTAP clusters must meet the following requirements when tiering data to Amazon S3.
@@ -161,6 +162,7 @@ By default, Cloud tiering creates the bucket for you. If you want to use your ow
 
 NOTE: If you are planning to configure Cloud Tiering to use a lower cost storage class where your tiered data will transition to after a certain number of days, you must not select any lifecycle rules when setting up the bucket in your AWS account. Cloud Tiering manages the lifecycle transitions.
 
+[[set-up-s3-permissions]]
 === Set up S3 permissions
 
 You'll need to configure two sets of permissions:

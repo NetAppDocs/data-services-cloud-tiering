@@ -21,7 +21,7 @@ Originally supported on AFF, FAS, and ONTAP Select systems with all-SSD aggregat
 
 You can configure tiering for single-node clusters, HA-configured clusters, clusters in Tiering Mirror configurations, and MetroCluster configurations using FabricPool Mirror. Cloud Tiering licenses are shared among all of your clusters. 
 
-https://bluexp.netapp.com/cloud-tiering-service-tco[Use the Cloud Tiering TCO calculator to see how much money you can save^].
+https://www.netapp.com/data-services/tiering/tco-calculator/[Use the Cloud Tiering TCO calculator to see how much money you can save^].
 
 == NetApp Console 
 
@@ -61,7 +61,7 @@ You can tier inactive data from an on-premises ONTAP system to the following obj
 * NetApp StorageGRID
 * S3-compatible object storage (for example, MinIO)
 
-Cloud Tiering licenses can also be shared with your clusters that are tiering data to IBM Cloud Object Storage. The FabricPool configuration must be set up using System Manager or the ONTAP CLI, but link:task-licensing-cloud-tiering.html#apply-bluexp-tiering-licenses-to-clusters-in-special-configurations[licensing for this type of configuration is completed using Cloud Tiering.]
+Cloud Tiering licenses can also be shared with your clusters that are tiering data to IBM Cloud Object Storage. The FabricPool configuration must be set up using System Manager or the ONTAP CLI, but link:task-licensing-cloud-tiering.html#apply-cloud-tiering-licenses-to-clusters-in-special-configurations[licensing for this type of configuration is completed using Cloud Tiering.]
 
 NOTE: You can tier data from NAS volumes to the public cloud or to private clouds, like StorageGRID. When you tier data that is accessed by SAN protocols, NetApp recommends using private clouds due to connectivity considerations.
 
@@ -109,7 +109,7 @@ For example, if you have a 10 TB license, all capacity beyond the 10 TB is charg
 
 You won't be charged from your pay-as-you-go subscription during your free trial or if you haven't exceeded your Cloud Tiering BYOL license.
 
-link:task-licensing-cloud-tiering.html#use-a-bluexp-tiering-paygo-subscription[Learn how to set up a pay-as-you-go subscription].
+link:task-licensing-cloud-tiering.html#use-a-cloud-tiering-paygo-subscription[Learn how to set up a pay-as-you-go subscription].
 
 === Annual contract
 
@@ -121,11 +121,11 @@ Annual contracts are not currently supported when tiering to Google CLoud.
 
 Bring your own license by purchasing a *Cloud Tiering* license from NetApp (previously known as a "Cloud Tiering" license). You can purchase 1-, 2-, or 3-year term licenses and specify any amount of tiering capacity (starting at a minimum of 10 TiB). The BYOL Cloud Tiering license is a _floating_ license that you can use across multiple on-premises ONTAP clusters. The total tiering capacity that you define in your Cloud Tiering license can be used by all of your on-premises clusters.
 
-After you purchase a Cloud Tiering license, you'll need add the license to the NetApp Console. link:task-licensing-cloud-tiering.html#use-a-bluexp-tiering-byol-license[See how to use a Cloud Tiering BYOL license].
+After you purchase a Cloud Tiering license, you'll need add the license to the NetApp Console. link:task-licensing-cloud-tiering.html#use-a-cloud-tiering-byol-license[See how to use a Cloud Tiering BYOL license].
 
 As noted above, we recommend that you set up a pay-as-you-go subscription, even if you have purchased a BYOL license.
 
-NOTE: Starting August 2021 the old *FabricPool* license was replaced by the *Cloud Tiering* license. link:task-licensing-cloud-tiering.html#bluexp-tiering-byol-licensing-starting-in-2021[Read more about how the Cloud Tiering license is different than the FabricPool license].
+NOTE: Starting August 2021 the old *FabricPool* license was replaced by the *Cloud Tiering* license. link:task-licensing-cloud-tiering.html#cloud-tiering-byol-licensing-starting-in-2021[Read more about how the Cloud Tiering license is different than the FabricPool license].
 
 == How Cloud Tiering works
 
