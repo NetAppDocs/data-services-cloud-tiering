@@ -54,6 +54,7 @@ image:diagram_cloud_tiering_azure.png["An architecture image that shows the Clou
 
 NOTE: Communication between the Console agent and Blob storage is for object storage setup only. The agent can reside on your premises, instead of in the cloud.
 
+[[preparing-your-ontap-clusters]]
 === Prepare your ONTAP clusters
 
 Your ONTAP clusters must meet the following requirements when tiering data to Azure Blob storage.
@@ -101,7 +102,7 @@ An agent is required to tier data to the cloud. When tiering data to Azure Blob 
 
 === Verify that you have the necessary agent permissions
 
-If you created the Console agent using version 3.9.25 or greater, then you're all set. The custom role that provides the permissions that an agent needs to manage resources and processes within your Azure network will be set up by default. See the https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-azure.html#custom-role-permissions[required custom role permissions^] and the https://docs.netapp.com/us-en/bluexp-setup-admin/reference-permissions-azure.html#cloud-tiering[specific permissions required for Cloud Tiering^].
+If you created the Console agent using version 3.9.25 or greater, then you're all set. The custom role that provides the permissions that an agent needs to manage resources and processes within your Azure network will be set up by default. See the https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-azure.html[required custom role permissions^] and the https://docs.netapp.com/us-en/console-setup-admin/reference-permissions-azure.html#tiering[specific permissions required for Cloud Tiering^].
 
 If you created the agent using an earlier version, then you'll need to edit the permission list for the Azure account to add any missing permissions.
 

@@ -31,6 +31,7 @@ If you don't have a Cloud Tiering license, a 30-day free trial of Cloud Tiering 
 
 If your free trial ends and you haven't subscribed or added a license, then ONTAP no longer tiers cold data to object storage. All previously tiered data remains accessible; meaning you can retrieve and use this data. When retrieved, this data is moved back to the performance tier from the cloud. 
 
+[[use-a-cloud-tiering-paygo-subscription]]
 == Use a Cloud Tiering PAYGO subscription
 
 Pay-as-you-go subscriptions from your cloud provider's marketplace enable you to license the use of Cloud Volumes ONTAP systems and many Cloud Data Services, such as Cloud Tiering.
@@ -95,6 +96,7 @@ When tiering inactive data to Azure, you can subscribe to an annual contract fro
 
 Annual contracts are not currently supported when tiering to Google Cloud.
 
+[[use-a-cloud-tiering-byol-license]]
 == Use a Cloud Tiering BYOL license
 
 Bring-your-own licenses from NetApp provide 1-, 2-, or 3-year terms. The BYOL *Cloud Tiering* license (previously known as a "Cloud Tiering" license) is a _floating_ license that you can use across multiple on-premises ONTAP clusters in your NetApp Console organization. The total tiering capacity defined in your Cloud Tiering license is shared among *all* of your on-premises clusters, making initial licensing and renewal easy. The minimum capacity for a tiering BYOL license starts at 10 TiB.
@@ -108,6 +110,7 @@ Optionally, if you have an unassigned node-based license for Cloud Volumes ONTAP
 
 You manage Cloud Tiering BYOL licenses in the Console. You can add new licenses and update existing licenses. link:https://docs.netapp.com/us-en/bluexp-digital-wallet/task-manage-data-services-licenses.html[Learn how to manage licenses.^]
 
+[[cloud-tiering-byol-licensing-starting-in-2021]]
 === Cloud Tiering BYOL licensing starting in 2021
 
 The new *Cloud Tiering* license was introduced in August 2021 for tiering configurations that are supported within the NetApp Console using the Cloud Tiering service. The NetApp Console currently supports tiering to the following cloud storage: Amazon S3, Azure Blob storage, Google Cloud Storage, NetApp StorageGRID, and S3-compatible object storage.
@@ -141,6 +144,7 @@ If your licensed term is nearing the expiration date, or if your licensed capaci
 
 You can update existing licenses, view license status, and add new licenses through the Console. https://docs.netapp.com/us-en/bluexp-digital-wallet/task-manage-data-services-licenses.html[Learn about managing licenses^].
 
+[[apply-cloud-tiering-licenses-to-clusters-in-special-configurations]]
 == Apply Cloud Tiering licenses to clusters in special configurations
 
 ONTAP clusters in the following configurations can use Cloud Tiering licenses, but the license must be applied in a different manner than single-node clusters, HA-configured clusters, clusters in Tiering Mirror configurations, and MetroCluster configurations using FabricPool Mirror:
@@ -150,7 +154,7 @@ ONTAP clusters in the following configurations can use Cloud Tiering licenses, b
 
 === Process for existing clusters that have a FabricPool license
 
-When you link:task-managing-tiering.html#discovering-additional-clusters-from-bluexp-tiering[discover any of these special cluster types in Cloud Tiering], Cloud Tiering recognizes the FabricPool license and adds the license to the Console. Those clusters will continue tiering data as usual. When the FabricPool license expires, you'll need to purchase a Cloud Tiering license.
+When you link:task-managing-tiering.html#discovering-additional-clusters-from-cloud-tiering[discover any of these special cluster types in Cloud Tiering], Cloud Tiering recognizes the FabricPool license and adds the license to the Console. Those clusters will continue tiering data as usual. When the FabricPool license expires, you'll need to purchase a Cloud Tiering license.
 
 === Process for newly created clusters
 
@@ -171,11 +175,11 @@ Note that since data is tiered to two different object storage locations for Tie
 +
 Do not configure tiering at this point.
 
-. link:task-licensing-cloud-tiering.html#use-a-bluexp-tiering-byol-license[Purchase a Cloud Tiering license] for the capacity needed for the new cluster, or clusters.
+. link:task-licensing-cloud-tiering.html#use-a-cloud-tiering-byol-license[Purchase a Cloud Tiering license] for the capacity needed for the new cluster, or clusters.
 
 . In the Console <<licenses,add the license to the digital wallet>>[add the license].
 
-. In Cloud Tiering, link:task-managing-tiering.html#discovering-additional-clusters-from-bluexp-tiering[discover the new clusters].
+. In Cloud Tiering, link:task-managing-tiering.html#discovering-additional-clusters-from-cloud-tiering[discover the new clusters].
 
 . From the Clusters page, select image:screenshot_horizontal_more_button.gif[More icon] for the cluster and select *Deploy License*.
 +

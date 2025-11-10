@@ -45,6 +45,7 @@ image:diagram_cloud_tiering_storagegrid.png["An architecture image that shows th
 
 NOTE: Communication between the agent and StorageGRID is for object storage setup only.
 
+[[preparing-your-ontap-clusters]]
 === Prepare your ONTAP clusters
 
 Your ONTAP clusters must meet the following requirements when tiering data to StorageGRID.
@@ -89,6 +90,7 @@ StorageGRID must meet the following requirements.
 Supported StorageGRID versions::
 StorageGRID 10.3 and later is supported.
 
+[[preparing-storagegrid]]
 S3 credentials::
 When you set up tiering to StorageGRID, you need to provide Cloud Tiering with an S3 access key and secret key. Cloud Tiering uses the keys to access your buckets.
 +
