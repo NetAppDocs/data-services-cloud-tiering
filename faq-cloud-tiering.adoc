@@ -151,7 +151,7 @@ If you have Cloud Volumes ONTAP systems, you'll find them in the Cloud Tiering C
 
 It depends on where you tier the cold data. Refer to the following links for more details:
 
-* link:task-tiering-onprem-aws.html#prepare-your-ontap-cluster[Tiering data to Amazon S3]
+* link:task-tiering-onprem-aws.html#preparing-your-ontap-clusters[Tiering data to Amazon S3]
 * link:task-tiering-onprem-azure.html#preparing-your-ontap-clusters[Tiering data to Azure Blob storage]
 * link:task-tiering-onprem-gcp.html#preparing-your-ontap-clusters[Tiering data to Google Cloud Storage]
 * link:task-tiering-onprem-storagegrid.html#preparing-your-ontap-clusters[Tiering data to StorageGRID]
