@@ -117,7 +117,7 @@ Yes. Check https://aws.amazon.com/s3/pricing/[Amazon S3 Pricing], https://azure.
 
 === How can I estimate my volumes' savings and get a cold data report before I enable Cloud Tiering?
 
-To get an estimate, add your ONTAP cluster to the NetApp Console and inspect it through the Cloud Tiering Clusters page. Select *Calculate potential tiering savings* for the cluster to launch the https://bluexp.netapp.com/cloud-tiering-service-tco[Cloud Tiering TCO calculator^] to see how much money you can save.
+To get an estimate, add your ONTAP cluster to the NetApp Console and inspect it through the Cloud Tiering Clusters page. Select *Calculate potential tiering savings* for the cluster to launch the https://www.netapp.com/data-services/tiering/tco-calculator[Cloud Tiering TCO calculator^] to see how much money you can save.
 
 === How am I charged for tiering when I am using an ONTAP MetroCluster?
 
@@ -151,7 +151,7 @@ If you have Cloud Volumes ONTAP systems, you'll find them in the Cloud Tiering C
 
 It depends on where you tier the cold data. Refer to the following links for more details:
 
-* link:task-tiering-onprem-aws.html#prepare-your-ontap-cluster[Tiering data to Amazon S3]
+* link:task-tiering-onprem-aws.html#preparing-your-ontap-clusters[Tiering data to Amazon S3]
 * link:task-tiering-onprem-azure.html#preparing-your-ontap-clusters[Tiering data to Azure Blob storage]
 * link:task-tiering-onprem-gcp.html#preparing-your-ontap-clusters[Tiering data to Google Cloud Storage]
 * link:task-tiering-onprem-storagegrid.html#preparing-your-ontap-clusters[Tiering data to StorageGRID]

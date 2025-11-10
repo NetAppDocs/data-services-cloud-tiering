@@ -54,6 +54,7 @@ image:diagram_cloud_tiering_google.png["An architecture image that shows the Clo
 
 NOTE: Communication between the agent and Google Cloud Storage is for object storage setup only.
 
+[[preparing-your-ontap-clusters]]
 === Prepare your ONTAP clusters
 
 Your ONTAP clusters must meet the following requirements when tiering data to Google Cloud Storage.
@@ -113,6 +114,7 @@ Ensure that the Console agent has the required networking connections.
 +
 https://cloud.google.com/vpc/docs/configure-private-google-access[Private Google Access^] is recommended if you have a direct connection from your ONTAP cluster to the VPC and you want communication between the agent and Google Cloud Storage to stay in your virtual private network. Note that Private Google Access works with VM instances that have only internal (private) IP addresses (no external IP addresses).
 
+[[preparing-google-cloud-storage]]
 === Prepare Google Cloud Storage
 
 When you set up tiering, you need to provide storage access keys for a service account that has Storage Admin permissions. A service account enables Cloud Tiering to authenticate and access Cloud Storage buckets used for data tiering. The keys are required so that Google Cloud Storage knows who is making the request.

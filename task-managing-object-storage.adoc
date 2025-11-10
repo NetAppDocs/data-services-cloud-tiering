@@ -29,6 +29,7 @@ This example shows both an Amazon S3 and Azure Blob object store attached to dif
 +
 image:screenshot_tiering_object_store_view.png["A screenshot that shows the object storage information, which details total used capacity, aggregate attached to the object store, name of the object store, and more information."]
 
+[[adding-a-new-object-store]]
 == Add a new object store
 
 You can add a new object store for aggregates in your cluster. After you create it, you can attach it to an aggregate.
@@ -75,6 +76,7 @@ The object store is created.
 
 Now you can attach the object store to an aggregate in your cluster.
 
+[[attaching-a-second-object-store-to-an-aggregate-for-mirroring]]
 == Attach a second object store to an aggregate for mirroring
 
 You can attach a second object store to an aggregate to create a FabricPool mirror to synchronously tier data to two object stores. You must have one object store already attached to the aggregate. https://docs.netapp.com/us-en/ontap/fabricpool/create-mirror-task.html[Learn more about FabricPool mirrors^].
@@ -101,6 +103,7 @@ image:screenshot_tiering_mirror_config_complete.png["A screenshot showing a seco
 
 The Mirror status will appear as "Sync in progress" while the 2 object stores are synchronizing. The status will change to "Synchronized" when synchronization is complete.
 
+[[swapping-the-primary-and-mirror-object-store]]
 == Swap the primary and mirror object store
 
 You can swap the primary and mirror object store for an aggregate. The object store mirror becomes the primary, and the original primary becomes the mirror.
@@ -117,6 +120,7 @@ image:screenshot_tiering_mirror_swap.png["A screenshot showing the Swap Destinat
 
 . Approve the action in the dialog box and the primary and mirror objects stores are swapped.
 
+[[removing-a-mirror-object-store-from-an-aggregate]]
 == Remove a mirror object store from an aggregate
 
 You can remove a FabricPool mirror if you no longer need to replicate to an additional object store.
