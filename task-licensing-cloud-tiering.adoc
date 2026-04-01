@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: task-licensing-cloud-tiering.html
-keywords: subscribe, digital wallet, trial, marketplace, subscription, paygo, pay as you go, byol, bring your own license, annual, tiering, cloud tiering, license, cloud tiering, bluexp
-summary: A 30-day free trial of NetApp Cloud Tiering starts when you set up tiering from your first cluster. After the free trial ends, you'll need to pay for Cloud Tiering through a pay-as-you-go or annual subscription from your cloud provider's marketplace, a BYOL license from NetApp, or a combination of both.
+keywords: subscribe, Fabricpool transition trial, marketplace, subscription, paygo, pay as you go, byol, bring your own license, annual, tiering, cloud tiering, license, cloud tiering
+summary: NetApp Cloud Tiering is no longer available for purchase or license renewal as of April 26, 2026.
 ---
 
 = Set up licensing for NetApp Cloud Tiering
