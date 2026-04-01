@@ -66,18 +66,13 @@ When you need to update your license, contact NetApp to purchase a FabricPool li
 Customer question:: Do they need to purchase a FabricPool license? Or will they get one automatically when they transition to the new licensing model if their contract is not up? I assume they need to purchase a new license, but I want to confirm.
 
 [[apply-cloud-tiering-licenses-to-clusters-in-special-configurations]]
-== Apply FabricPool licenses to clusters in special configurations
+== Apply FabricPool licenses to clusters 
 
-ONTAP clusters in the following configurations can use Cloud Tiering licenses, but the license must be applied in a different manner than single-node clusters, HA-configured clusters, clusters in Tiering Mirror configurations, and MetroCluster configurations using FabricPool Mirror:
+Customer question:: Do we need all of the categories of clusters listed here? Or just the first one? I'm out of my depth here. For example, 
 
-* Clusters that are tiered to IBM Cloud Object Storage
-* Clusters that are installed in "dark sites"
-
-Customer question:: Do we need all of the categories of clusters listed here? Or just the first one? I'm out of my depth here.
-
-=== Apply FabricPool licenses to existing clusters 
+The following ONTAP clusters iconfigurations can use FabricPool licenses, but the license must be applied in a different manner than single-node clusters, HA-configured clusters, clusters in Tiering Mirror configurations, and MetroCluster configurations using FabricPool Mirror: <link to existing docs?>
 
 
 
-=== Apply FabricPool licenses to newly created clusters
+
 
