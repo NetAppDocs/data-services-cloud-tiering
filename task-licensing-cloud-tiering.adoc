@@ -73,7 +73,9 @@ ONTAP clusters in the following configurations can use Cloud Tiering licenses, b
 * Clusters that are tiered to IBM Cloud Object Storage
 * Clusters that are installed in "dark sites"
 
-=== Apply FabricPool licenses to existing clusters that have a FabricPool license
+Customer question:: Do we need all of the categories of clusters listed here? Or just the first one? I'm out of my depth here.
+
+=== Apply FabricPool licenses to existing clusters 
 
 
 
