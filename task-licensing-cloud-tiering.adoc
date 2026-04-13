@@ -19,6 +19,9 @@ include::_include/cloud-tiering-eol.adoc[]
 
 If you are currently using Cloud Tiering licensing, you're not affected until your Cloud Tiering license reaches its expiration date or maximum capacity. Contact NetApp when you need to update your license, or earlier to make sure there is no interruption in your ability to tier data to the cloud.
 
+//// 
+
+HIDING BELOW CONTENT UNTIL WE HAVE THE NEW FABRICPOOL LICENSING CONTENT READY TO GO.
 
 
 [[cloud-tiering-byol-licensing-starting-in-2021]]
@@ -72,6 +75,7 @@ Customer question:: Do we need all of the categories of clusters listed here? Or
 
 The following ONTAP clusters iconfigurations can use FabricPool licenses, but the license must be applied in a different manner than single-node clusters, HA-configured clusters, clusters in Tiering Mirror configurations, and MetroCluster configurations using FabricPool Mirror: <link to existing docs?>
 
+//// 
 
 
 
