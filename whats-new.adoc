@@ -15,12 +15,11 @@ summary: Learn what's new in NetApp Cloud Tiering.
 [.lead]
 Learn what's new in NetApp Cloud Tiering.
 
-// tag::whats-new[]
 
 
 == 13 April 2026
 
-include::_whatsnew/2026-4-13.adoc[]
+include::_whatsnew/2026-04-13.adoc[]
 
 == 06 October 2025
 
@@ -35,7 +34,6 @@ include::_whatsnew/2023-08-09.adoc[]
 
 include::_whatsnew/2023-07-04.adoc[]
 
-// end::whats-new[]
 
 == 03 April 2023
 
