@@ -1,4 +1,4 @@
 
-_include::cloud-tiering-eol.adoc[]
+include::../_include/cloud-tiering-eol.adoc[]
 
 
